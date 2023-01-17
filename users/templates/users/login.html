@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-    <form action="users:login" method="post">
+    <form action="{% url 'users:login' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>

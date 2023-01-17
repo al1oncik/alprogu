@@ -7,14 +7,14 @@ from users.forms import UserRegistrationForm, UserLoginForm
 
 def login(request):
     if request.method == "POST":
-        form = UserLoginForm(request.POST)
+        form = UserLoginForm(data=request.POST)
         if form.is_valid():
             username = request.POST['username']
             password = request.POST['password']
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserLoginForm()
     context = {'form': form}
@@ -22,16 +22,16 @@ def login(request):
 
 
 def logout(request):
-    auth.logout(request.user)
-    return HttpResponseRedirect(reverse('index'))
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('main:index'))
 
 
 def register(request):
     if request.method == "POST":
-        form = UserRegistrationForm(request.POST)
+        form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('index'))
+            return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserRegistrationForm()
     context = {'form': form}
