@@ -11,7 +11,10 @@
     <body>
         <div class="navbar">
             <h1>alprogu</h1>
-            <a href="{% url 'users:register' %}">Registration</a>
+            <div>
+                <a href="{% url 'users:login' %}">Login</a>
+                <a href="{% url 'users:register' %}">Registration</a>
+            </div>
         </div>
         {% block content %}
         {% endblock %}
