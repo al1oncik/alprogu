@@ -4,8 +4,14 @@ from django import forms
 
 
 class UserLoginForm(AuthenticationForm):
-    username = forms.CharField(max_length=150)
-    password = forms.PasswordInput()
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'username_input',
+        'placeholder': 'username',
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'password_input',
+        'placeholder': 'password',
+    }))
 
     class Meta:
         model = User

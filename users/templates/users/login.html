@@ -6,13 +6,16 @@
 {% endblock %}
 
 {% block css %}
-    <link type="text/css" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 
 {% block content %}
     <form action="{% url 'users:login' %}" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
+        <div class="login_block">
+            {{ form.username }}
+            {{ form.password }}
+            <button type="submit" class="login_button">Login</button>
+        </div>
     </form>
 {% endblock %}
