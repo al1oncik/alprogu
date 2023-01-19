@@ -19,12 +19,30 @@ class UserLoginForm(AuthenticationForm):
 
 
 class UserRegistrationForm(UserCreationForm):
-    first_name = forms.CharField(max_length=150)
-    last_name = forms.CharField(max_length=150)
-    username = forms.CharField(max_length=150)
-    email = forms.EmailField()
-    password1 = forms.PasswordInput()
-    password2 = forms.PasswordInput()
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'user_input',
+        'placeholder': 'First name',
+    }))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'user_input',
+        'placeholder': 'Last name',
+    }))
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'user_input',
+        'placeholder': 'Username',
+    }))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'user_input',
+        'placeholder': 'email',
+    }))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'user_input',
+        'placeholder': 'create password',
+    }))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'user_input',
+        'placeholder': 'verify password',
+    }))
 
     class Meta:
         model = User

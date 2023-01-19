@@ -20,6 +20,9 @@
                 {% endif %}
             </div>
         </div>
+        {% if user.is_authenticated %}
+                <h2 style="color: white">Wellcome back {{ user.username }}</h2>
+        {% endif %}
         {% block content %}
         {% endblock %}
     </body>

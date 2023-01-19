@@ -1,0 +1,43 @@
+body {
+    background-color: black;
+}
+
+.login_block {
+    width: 50%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 45px;
+    box-shadow: 5px 5px 40px green;
+}
+
+.input_block {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+
+.user_input {
+    margin-bottom: 20px;
+    height: 35px;
+    border-radius: 45px;
+    box-shadow: 10px 10px 20px green;
+}
+
+.submit_button {
+    width: 40%;
+    height: 8%;
+    border-radius: 50px;
+    color: white;
+    background-color: green;
+}
