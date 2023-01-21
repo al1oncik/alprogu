@@ -11,10 +11,14 @@ body {
       padding: 10px;
       border-radius: 30px;
       box-shadow: 5px 5px 40px green;
-    }
+}
 
 .navbar a {
       color: #00ff00;
       text-decoration: none;
       margin-right: 10px;
-    }
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}

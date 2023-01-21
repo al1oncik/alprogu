@@ -33,11 +33,3 @@ body {
     border-radius: 45px;
     box-shadow: 10px 10px 20px green;
 }
-
-.submit_button {
-    width: 40%;
-    height: 8%;
-    border-radius: 50px;
-    color: white;
-    background-color: green;
-}
