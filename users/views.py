@@ -31,7 +31,13 @@ def register(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
+            username = request.POST['username']
+            password = request.POST['password1']
+            user = auth.authenticate(username=username, password=password)
+            auth.login(request, user)
             return HttpResponseRedirect(reverse('main:index'))
+        else:
+            print(form.errors)
     else:
         form = UserRegistrationForm()
     context = {'form': form}

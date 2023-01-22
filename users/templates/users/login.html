@@ -12,10 +12,16 @@
 {% block content %}
     <form action="{% url 'users:login' %}" method="post">
         {% csrf_token %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger alert-dismissible fade show error_alert" role="alert">
+                {{form.non_field_errors}}
+            </div>
+        {% endif %}
         <div class="login_block">
             {{ form.username }}
             {{ form.password }}
-            <button type="submit" class="btn btn-outline-success">Login</button>
+            <button type="submit" class="mb-3 btn btn-outline-success">Login</button>
+            <a href="{% url 'users:register' %}">Don't have an account? Sign up now.</a>
         </div>
     </form>
 {% endblock %}

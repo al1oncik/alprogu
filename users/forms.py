@@ -5,7 +5,7 @@ from django import forms
 
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'username_input form-control',
+        'class': 'form-control username_input',
         'placeholder': 'username',
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
