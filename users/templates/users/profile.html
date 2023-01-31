@@ -1,0 +1,23 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Profile - {{ user.username }}</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" >
+{% endblock %}
+
+{% block content %}
+    <form class="container" action="{% url 'users:profile' %}" method="post">
+        {% csrf_token %}
+        <div class="user-image">
+            <img width="150" height="150" src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'img/default-avatar.png' %} {% endif %}">
+            {{ form.image }}
+        </div>
+        <div class="user-info">
+        </div>
+        <input class="btn btn-info btn-block" type="submit" value="Save">
+    </form>
+{% endblock %}

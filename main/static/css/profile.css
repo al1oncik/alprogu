@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+}
+
+.user-image {
+    display: flex;
+    justify-content: center;
+}
+
+.user-image img {
+    border-radius: 45px;
+    border: 8px solid #00ff00;
+    box-shadow: 5px 5px 80px #00ff00;
+}
+
+.image-change {
+    font-size: 12px;
+    display: flex;
+
+}
