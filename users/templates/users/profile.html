@@ -10,14 +10,40 @@
 {% endblock %}
 
 {% block content %}
-    <form class="container" action="{% url 'users:profile' %}" method="post">
+    <form class="container" action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="user-image">
-            <img width="150" height="150" src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'img/default-avatar.png' %} {% endif %}">
-            {{ form.image }}
-        </div>
         <div class="user-info">
+            <div class="form-column column">
+                <div class="form-row row">
+                    <div>
+                        <label class="small mb-1 badge badge-light" for="{{ form.first_name.id_for_label }}">First name</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div>
+                        <label class="small mb-1 badge badge-light" for="{{ form.last_name.id_for_label }}">Last name</label>
+                        {{ form.last_name }}
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div>
+                        <label class="small mb-1 badge badge-light" for="{{ form.username.id_for_label }}">Username</label>
+                        {{ form.username }}
+                    </div>
+                    <div>
+                        <label class="small mb-1 badge badge-light" for="{{ form.email.id_for_label }}">Email</label>
+                        {{ form.email}}
+                    </div>
+                </div>
+            </div>
+            <div class="user-image">
+                <img width="256" height="256" src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'img/default-avatar.png' %} {% endif %}">
+            </div>
         </div>
-        <input class="btn btn-info btn-block" type="submit" value="Save">
+
+        <div class="custom-file mb-5">
+                {{ form.image }}
+                <label class="custom-file-label" for="form.image.id_for_label"> Select Image</label>
+        </div>
+        <input class="btn btn-outline-success" type="submit" value="Save">
     </form>
 {% endblock %}

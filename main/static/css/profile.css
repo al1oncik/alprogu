@@ -8,9 +8,18 @@ body {
     padding: 100px;
 }
 
+.user-info {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
 .user-image {
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .user-image img {
@@ -19,8 +28,11 @@ body {
     box-shadow: 5px 5px 80px #00ff00;
 }
 
-.image-change {
-    font-size: 12px;
-    display: flex;
-
+.user-input {
+    margin-bottom: 20px;
+    margin-right: 10px;
+    height: 35px;
+    border-radius: 45px;
+    border: 2px solid #00ff00;
 }
+

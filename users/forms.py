@@ -49,6 +49,14 @@ class UserRegistrationForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
 
 class UserProfileForm(UserChangeForm):
-    image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'image-change', 'required': False}))
+    image = forms.ImageField(widget=forms.FileInput(), required=False)
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'user-input'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'user-input'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'user-input', 'readonly': True}))
+    email = forms.CharField(widget=forms.TextInput(attrs={'class': 'user-input', 'readonly': True}))
+
+    class Meta:
+        model = User
+        fields = ['image', 'first_name', 'last_name', 'username', 'email']
 
 
