@@ -1,11 +1,14 @@
 body {
     background-color: black;
+    margin-top: 20px;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     padding: 100px;
+    border-radius: 45px;
+    box-shadow: 5px 5px 80px #00ff00;
 }
 
 .user-info {
