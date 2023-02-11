@@ -17,7 +17,7 @@
                 {{ form.errors }}
             </div>
         {% endif %}
-        <div class="login_block">
+        <div style="{% if form.errors %} box-shadow: 5px 5px 250px #ff0000 {% endif %}" class="login_block">
             <div class="input_block">
                 <div class="inputs">
                     {{ form.first_name }}

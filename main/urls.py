@@ -6,3 +6,5 @@ app_name = 'main'
 urlpatterns = [
     path('', views.index, name='index'),
 ]
+
+handler404 = 'main.views.custom_404'

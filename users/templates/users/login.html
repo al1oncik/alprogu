@@ -17,7 +17,7 @@
                 {{form.non_field_errors}}
             </div>
         {% endif %}
-        <div class="login_block">
+        <div style="{% if form.non_field_errors%} box-shadow: 5px 5px 250px #ff0000 {% endif %}" class="login_block">
             {{ form.username }}
             {{ form.password }}
             <button type="submit" class="mb-3 btn btn-outline-success">Login</button>

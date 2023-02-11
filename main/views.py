@@ -1,7 +1,11 @@
 from django.shortcuts import render
-
+from questions.models import Topic
 
 def index(request):
-    return render(request, 'main/base.html')
+    context = {'topics': Topic.objects.all()}
+    return render(request, 'main/base.html', context)
+
+def custom_404(request, exception):
+    return render(request, 'main/404.html')
 
 
