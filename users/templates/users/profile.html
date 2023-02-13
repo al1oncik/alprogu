@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-    <form class="container" action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
+    <form class="container" action="{% url 'users:profile' user.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="user-info">
             <div class="form-column column">

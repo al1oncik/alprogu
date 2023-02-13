@@ -48,12 +48,12 @@ def register(request):
 
 
 @login_required
-def profile(request):
+def profile(request, id):
     if request.method == "POST":
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('users:profile'))
+            return HttpResponseRedirect(reverse('users:profile', args=(id)))
     else:
         form = UserProfileForm(instance=request.user)
 
