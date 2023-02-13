@@ -21,7 +21,7 @@
                     <a href="{% url 'users:profile' user.id %}">Profile <i class="fa-regular fa-user"></i></a>
                     <a href="{% url 'users:logout' %}">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
                     <div class="create-question-button">
-                        <a href="#">
+                        <a href="{% url 'questions:create' %}">
                             <i class="fa-solid fa-plus"></i>
                         </a>
                     </div>
@@ -30,10 +30,14 @@
         </div>
         <div class="topics">
             {% for topic in topics %}
-                <div class="topic-block">
-                    <h1>{{ topic.title }}</h1>
-                    <p>{{ topic.text }}</p>
-                </div>
+                    <div class="topic-block">
+                        <a href="{% url 'questions:question' topic.id %}">
+                           <h1>{{ topic.title }}</h1>
+                            <p>{{ topic.text }}</p>
+                            <p>{{ topic.creator }}</p>
+                            <p>{{ topic.creation_date }}</p>
+                        </a>
+                    </div>
             {% endfor %}
         </div>
 
