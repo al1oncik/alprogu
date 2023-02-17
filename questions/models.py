@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Topic(models.Model):
     title = models.CharField(max_length=150)
@@ -8,6 +9,10 @@ class Topic(models.Model):
 
     def __str__(self):
         return self.title
+
+    def created(self):
+        t = timezone.now() - self.creation_date
+        return f"{t.days} days"
 
 class Comment(models.Model):
     text = models.TextField()

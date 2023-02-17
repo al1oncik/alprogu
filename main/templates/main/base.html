@@ -39,10 +39,8 @@
             {% for topic in topics %}
                     <div class="topic-block">
                         <a href="{% url 'questions:question' topic.id %}">
-                           <h1>{{ topic.title }}</h1>
-                            <p>{{ topic.text }}</p>
-                            <p>{{ topic.creator }}</p>
-                            <p>{{ topic.creation_date }}</p>
+                           <h4>{{ topic.title }}</h4>
+                           <p>{{ topic.creator }} asked {{ topic.created }} ago</p>
                         </a>
                     </div>
             {% endfor %}
