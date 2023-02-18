@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: black;
+    background-image: linear-gradient(to bottom right, #0f9b0f, #000000);
     padding: 10px;
 }
 
@@ -52,13 +52,14 @@ body {
 .topic-block {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     width: 60%;
     color: white;
     margin-bottom: 40px;
     border: 5px ridge #00ff00;
     padding: 20px;
+    background-color: black;
 }
 
 .topic-block-creator {
@@ -67,6 +68,14 @@ body {
     right: 1%;
     top: 70%;
     color: #5d6470;
+}
+
+.topic-block-metadata {
+    margin-right: 20px;
+}
+
+.topic-block-metadata p {
+    font-size: 14px;
 }
 
 .create-question-button {

@@ -9,11 +9,12 @@ class Topic(models.Model):
     vote = models.IntegerField(default=0)
     answers = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
+    seen_by = models.JSONField(default=list)
 
     def __str__(self):
         return self.title
 
-class Comment(models.Model):
+class Answer(models.Model):
     text = models.TextField()
     topic = models.ForeignKey(to=Topic, on_delete=models.CASCADE)
 

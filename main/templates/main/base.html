@@ -38,6 +38,11 @@
         <div class="topics">
             {% for topic in topics %}
                     <div class="topic-block">
+                        <div class="topic-block-metadata">
+                            <p>{{ topic.vote }} vote</p>
+                            <p>{{ topic.answers }} answers</p>
+                            <p>{{ topic.views }} views</p>
+                        </div>
                         <a href="{% url 'questions:question' topic.id %}">
                            <h4>{{ topic.title }}</h4>
                         </a>
