@@ -45,22 +45,34 @@ body {
     color: white;
 }
 
+.topics h4:hover {
+    text-decoration: underline;
+}
+
 .topic-block {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
-    height: 300px;
+    width: 60%;
     color: white;
     margin-bottom: 40px;
-    border-radius: 45px;
-    border: 2px solid #00ff00;
-    box-shadow: 5px 5px 30px #00ff00;
+    border: 5px ridge #00ff00;
+    padding: 20px;
+}
+
+.topic-block-creator {
+    font-size: 14px;
+    position: absolute;
+    right: 1%;
+    top: 70%;
+    color: #5d6470;
 }
 
 .create-question-button {
-    border-radius: 60px;
     border: 3px solid #00ff00;
+    background-color: black;
+    border-radius: 45px;
     position: fixed;
     left: 93%;
     top: 85%;
@@ -68,5 +80,62 @@ body {
 
 .create-question-button i {
     font-size: 64px;
+    color: #00ff00;
+}
+
+#create-question-form {
+    background-color: black;
+    position: fixed;
+    left: 60%;
+    top: 30%;
+    border: 2px solid #00ff00;
+    border-radius: 45px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 70%;
+    padding: 10px;
+    z-index: 999;
+}
+
+.close-button {
+    color: #00ff00;
+    font-size: 30px;
+    background-color: black;
+    border: 0px solid black;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+
+.form-title-input {
+    width: 60%;
+    height: 15%;
+    margin-bottom: 20px;
+    border-radius: 45px;
+    border: 2px solid #00ff00;
+    background-color: black;
+    color: #00ff00;
+}
+
+.form-title-input:focus {
+    background-color: black;
+    color: #00ff00;
+}
+
+.form-text-input {
+    width: 80%;
+    height: 60%;
+    margin-bottom: 20px;
+    border-radius: 45px;
+    border: 2px solid #00ff00;
+    background-color: black;
+    color: #00ff00;
+}
+
+.form-text-input:focus {
+    background-color: black;
     color: #00ff00;
 }

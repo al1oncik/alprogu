@@ -1,9 +1,10 @@
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.contrib import auth
-from django.http import HttpResponseRedirect
-from users.forms import UserRegistrationForm, UserLoginForm, UserProfileForm
-from django.contrib.auth.decorators import login_required
+
+from users.forms import UserLoginForm, UserProfileForm, UserRegistrationForm
 
 
 def login(request):
