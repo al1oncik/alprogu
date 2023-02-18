@@ -50,6 +50,7 @@ body {
 }
 
 .topic-block {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,6 +58,15 @@ body {
     color: white;
     margin-bottom: 40px;
     border: 5px ridge #00ff00;
+    padding: 20px;
+}
+
+.topic-block-creator {
+    font-size: 14px;
+    position: absolute;
+    right: 1%;
+    top: 70%;
+    color: #5d6470;
 }
 
 .create-question-button {
@@ -87,6 +97,7 @@ body {
     width: 40%;
     height: 70%;
     padding: 10px;
+    z-index: 999;
 }
 
 .close-button {
@@ -128,12 +139,3 @@ body {
     background-color: black;
     color: #00ff00;
 }
-
-
-
-
-
-
-
-
-

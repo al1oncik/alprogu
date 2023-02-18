@@ -1,6 +1,8 @@
-from django.shortcuts import render, HttpResponseRedirect
-from questions.models import Topic
+from django.shortcuts import HttpResponseRedirect, render
+
 from questions.forms import QuestionCreateForm
+from questions.models import Topic
+
 
 def index(request):
     if request.method == "POST":

@@ -25,12 +25,12 @@
                         </button>
                     <form action="{% url 'main:index' %}" method="post" id="create-question-form">
                         {% csrf_token %}
-                        <button class="close-button" onclick="closeQuestionCreationForm()">
-                            <i class="fa-sharp fa-solid fa-xmark"></i>
-                        </button>
                         {{ form.title }}
                         {{ form.text }}
                         <button class="btn btn-outline-success" type="submit">Create</button>
+                        <button class="close-button" type="button" onclick="closeQuestionCreationForm()">
+                            <i class="fa-sharp fa-solid fa-xmark"></i>
+                        </button>
                     </form>
                 {% endif %}
             </div>
@@ -40,8 +40,8 @@
                     <div class="topic-block">
                         <a href="{% url 'questions:question' topic.id %}">
                            <h4>{{ topic.title }}</h4>
-                           <p>{{ topic.creator }} asked {{ topic.created }} ago</p>
                         </a>
+                        <p class="topic-block-creator">{{ topic.creator }} asked in {{ topic.creation_date }}</p>
                     </div>
             {% endfor %}
         </div>

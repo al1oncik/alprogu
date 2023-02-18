@@ -1,5 +1,7 @@
 from django.shortcuts import render
+
 from .models import Topic
+
 
 def question(request, id):
     topic = Topic.objects.get(id=id)
