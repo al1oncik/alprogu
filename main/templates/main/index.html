@@ -12,10 +12,10 @@
 
 {% block content %}
 <main>
-    <button class="create-question-button" onclick="openQuestionCreationForm()">
-                <i class="fa-solid fa-plus"></i>
-    </button>
     {% if user.is_authenticated %}
+        <button class="create-question-button" onclick="openQuestionCreationForm()">
+            <i class="fa-solid fa-plus"></i>
+        </button>
         <form action="{% url 'main:index' %}" method="post" id="create-question-form">
             {% csrf_token %}
             {{ form.title }}
