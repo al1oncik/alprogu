@@ -49,6 +49,19 @@
                         <p class="topic-block-creator">{{ topic.creator }} asked at {{ topic.creation_date }}</p>
                     </div>
             {% endfor %}
+            <div class="page-navigator">
+                <ul>
+                    {% if topics.has_previous %}
+                        <li><a href="{% url 'main:index' page|add:-1 %}"><i class="fa-solid fa-arrow-left"></i></a></li>
+                        <li><a href="{% url 'main:index' page|add:-1 %}">{{page|add:-1}}</a></li>
+                    {% endif %}
+                    <li><a class="current-page" href="{% url 'main:index' page%}">{{page}}</a></li>
+                    {% if topics.has_next %}
+                        <li><a href="{% url 'main:index' page|add:1 %}">{{page|add:1}}</a></li>
+                        <li><a href="{% url 'main:index' page|add:1 %}"><i class="fa-solid fa-arrow-right"></i></a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </main>
         <footer>
             <p>

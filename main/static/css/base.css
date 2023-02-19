@@ -41,6 +41,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 400px;
 }
 
 main a {
@@ -76,6 +77,7 @@ main h4:hover {
 
 .topic-block-metadata {
     margin-right: 20px;
+    color: #5d6470;
 }
 
 .topic-block-metadata p {
@@ -182,5 +184,37 @@ footer i {
 .link i {
     margin-right: 10px;
     color: green;
+}
+
+.page-navigator {
+    display: flex;
+    margin: 0 auto;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.page-navigator ul {
+    list-style: none;
+    display: flex;
+}
+
+.page-navigator li {
+    margin-right: 10px;
+}
+
+.page-navigator li:hover {
+    font-size: 24px;
+}
+
+.page-navigator i {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.current-page {
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
 }
 
