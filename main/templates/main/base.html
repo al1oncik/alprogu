@@ -35,7 +35,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="topics">
+        <main>
             {% for topic in topics %}
                     <div class="topic-block">
                         <div class="topic-block-metadata">
@@ -46,11 +46,32 @@
                         <a href="{% url 'questions:question' topic.id %}">
                            <h4>{{ topic.title }}</h4>
                         </a>
-                        <p class="topic-block-creator">{{ topic.creator }} asked in {{ topic.creation_date }}</p>
+                        <p class="topic-block-creator">{{ topic.creator }} asked at {{ topic.creation_date }}</p>
                     </div>
             {% endfor %}
-        </div>
-    <script src="{% static 'js/base.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        </main>
+        <footer>
+            <p>
+                © 2023 Alprogu. All rights reserved. Made with ❤️ by al1oncik and the Alprogu community.
+                 The information and views expressed on this website are those of the individual contributors and
+                do not necessarily reflect the views of Alprogu. We are not responsible for the content of any
+                user-generated posts or comments. Please read our terms and conditions and privacy policy
+                for more information.
+            </p>
+            <div class="link">
+                <a href="https://github.com/al1oncik">
+                    <i class="fa-brands fa-github github-icon"></i>
+                </a>
+                <p>https://github.com/al1oncik</p>
+            </div>
+            <div class="link">
+                <a href="https://www.youtube.com/channel/UCAfrAfU7vN2fDPwgZfeaR2Q">
+                    <i class="fa-brands fa-youtube youtube-icon"></i>
+                </a>
+                <p>@al1oncik</p>
+            </div>
+        </footer>
+        <script src="{% static 'js/base.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
