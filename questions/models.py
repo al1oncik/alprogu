@@ -10,6 +10,7 @@ class Topic(models.Model):
     answers = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
     seen_by = models.JSONField(default=list)
+    categories = models.JSONField(default=list)
 
     def __str__(self):
         return self.title

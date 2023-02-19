@@ -7,62 +7,26 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-        <title>Home page</title>
+        {% block title %}
+        {% endblock %}
 
-        <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+        {% block css %}
+        {% endblock %}
     </head>
     <body>
         <div class="navbar">
-            <h1 class="title">alprogu</h1>
+            <a href="{% url 'main:index' %}" style="text-decoration: none"><h1 class="title">alprogu</h1></a>
             <div>
                 {% if not user.is_authenticated %}
                     <a href="{% url 'users:login' %}">Login <i class="fa-solid fa-right-to-bracket"></i></a>
                 {% else %}
                     <a href="{% url 'users:profile' user.id %}">Profile <i class="fa-regular fa-user"></i></a>
                     <a href="{% url 'users:logout' %}">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
-                        <button class="create-question-button" onclick="openQuestionCreationForm()">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                    <form action="{% url 'main:index' %}" method="post" id="create-question-form">
-                        {% csrf_token %}
-                        {{ form.title }}
-                        {{ form.text }}
-                        <button class="btn btn-outline-success" type="submit">Create</button>
-                        <button class="close-button" type="button" onclick="closeQuestionCreationForm()">
-                            <i class="fa-sharp fa-solid fa-xmark"></i>
-                        </button>
-                    </form>
                 {% endif %}
             </div>
         </div>
-        <main>
-            {% for topic in topics %}
-                    <div class="topic-block">
-                        <div class="topic-block-metadata">
-                            <p>{{ topic.vote }} vote</p>
-                            <p>{{ topic.answers }} answers</p>
-                            <p>{{ topic.views }} views</p>
-                        </div>
-                        <a href="{% url 'questions:question' topic.id %}">
-                           <h4>{{ topic.title }}</h4>
-                        </a>
-                        <p class="topic-block-creator">{{ topic.creator }} asked at {{ topic.creation_date }}</p>
-                    </div>
-            {% endfor %}
-            <div class="page-navigator">
-                <ul>
-                    {% if topics.has_previous %}
-                        <li><a href="{% url 'main:index' page|add:-1 %}"><i class="fa-solid fa-arrow-left"></i></a></li>
-                        <li><a href="{% url 'main:index' page|add:-1 %}">{{page|add:-1}}</a></li>
-                    {% endif %}
-                    <li><a class="current-page" href="{% url 'main:index' page%}">{{page}}</a></li>
-                    {% if topics.has_next %}
-                        <li><a href="{% url 'main:index' page|add:1 %}">{{page|add:1}}</a></li>
-                        <li><a href="{% url 'main:index' page|add:1 %}"><i class="fa-solid fa-arrow-right"></i></a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </main>
+        {% block content %}
+        {% endblock %}
         <footer>
             <p>
                 © 2023 Alprogu. All rights reserved. Made with ❤️ by al1oncik and the Alprogu community.

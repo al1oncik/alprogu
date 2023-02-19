@@ -23,7 +23,7 @@ def index(request, page=1):
     context = {'topics': paginator.get_page(page),
                'form': form,
                'page': page}
-    return render(request, 'main/base.html', context)
+    return render(request, 'main/index.html', context)
 
 def custom_404(request, exception):
     return render(request, 'main/404.html')
