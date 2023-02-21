@@ -1,6 +1,0 @@
-<form action="{% url 'questions:create' %}" method="post">
-    {% csrf_token %}
-    {{ form.title }}
-    {{ form.text }}
-    <button type="submit">Save</button>
-</form>

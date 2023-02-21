@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Home page</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<main>
+    {% if user.is_authenticated %}
+        <button class="create-question-button" onclick="openQuestionCreationForm()">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+        <form action="{% url 'main:index' %}" method="post" id="create-question-form">
+            {% csrf_token %}
+            {{ form.title }}
+            {{ form.text }}
+            <button class="btn btn-outline-success" type="submit">Create</button>
+            <button class="close-button" type="button" onclick="closeQuestionCreationForm()">
+                <i class="fa-sharp fa-solid fa-xmark"></i>
+            </button>
+
+        </form>
+    {% endif %}
+    {% for topic in topics %}
+        <div class="topic-block">
+            <div class="topic-block-metadata">
+                <p>{{ topic.vote }} vote</p>
+                <p>{{ topic.answers }} answers</p>
+                <p>{{ topic.views }} views</p>
+            </div>
+            <a href="{% url 'questions:question' topic.id %}">
+                <h4>{{ topic.title }}</h4>
+            </a>
+            <p class="topic-block-creator">{{ topic.creator }} asked at {{ topic.creation_date }}</p>
+        </div>
+    {% endfor %}
+    <div class="page-navigator">
+        <ul>
+            {% if topics.has_previous %}
+                <li><a href="{% url 'main:index' page|add:-1 %}"><i class="fa-solid fa-arrow-left"></i></a></li>
+                <li><a href="{% url 'main:index' page|add:-1 %}">{{page|add:-1}}</a></li>
+            {% endif %}
+            <li><a class="current-page" href="{% url 'main:index' page%}">{{page}}</a></li>
+            {% if topics.has_next %}
+                <li><a href="{% url 'main:index' page|add:1 %}">{{page|add:1}}</a></li>
+                <li><a href="{% url 'main:index' page|add:1 %}"><i class="fa-solid fa-arrow-right"></i></a></li>
+            {% endif %}
+        </ul>
+    </div>
+</main>
+{% endblock %}

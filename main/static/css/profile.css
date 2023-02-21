@@ -2,6 +2,7 @@ body {
     background-color: black;
     margin-top: 20px;
     padding: 0 200px 0 200px;
+    background-image: linear-gradient(to bottom right, #000000, #434343);
 }
 
 .container {
@@ -10,6 +11,7 @@ body {
     padding: 100px;
     border-radius: 45px;
     box-shadow: 5px 5px 80px #00ff00;
+    background-color: black;
 }
 
 .user-info {

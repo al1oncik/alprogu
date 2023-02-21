@@ -1,4 +1,52 @@
-<p>{{ topic.title }}</p>
-<p>{{ topic.text }}</p>
-<p>{{ topic.creator }}</p>
-<p>{{ topic.creation_date }}</p>
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/question.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="question-container">
+            <h3 class="question-title">{{ question.title }}</h3>
+            <div class="question-metadata">
+                <p>Asked at {{question.creation_date}}</p>
+                <p>Viewed by {{question.views}} people</p>
+            </div>
+            <hr />
+            <p class="question-text">{{ question.text}}</p>
+            <div class="question-footer">
+                <div class="question-categories">
+                    {% for category in question.categories %}
+                        <p>{{category}}</p>
+                    {% endfor %}
+                </div>
+                <div class="question-author">
+                    <img width="50px" height="50px" src="{% if question_author.image %}{{ question_author.image.url }}{% else %}{% static 'img/default-avatar.png' %}{% endif %}">
+                    <p>{{question_author.username}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="vote-bar">
+            {% csrf_token %}
+            <button style="{% if voted == 1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
+                    onclick="voteUp({{question.id}})"
+                    id="button-up"
+                    data-state="{% if voted == 1%}active{%else%}inactive{% endif %}">
+                <i class="fa-sharp fa-solid fa-caret-up"></i>
+            </button>
+            <p id="counter">{{question.vote}}</p>
+            <button
+                    style="{% if voted == -1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
+                    onclick="voteDown({{question.id}})"
+                    id="button-down"
+                    data-state="{% if voted == -1%}active{%else%}inactive{% endif %}"><i
+                    class="fa-sharp fa-solid fa-caret-down"></i></button>
+        </div>
+    </main>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/question.js' %}"></script>
+{% endblock %}
