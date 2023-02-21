@@ -15,7 +15,7 @@ main {
     border: 5px ridge #00ff00;
     padding: 20px;
     background-color: black;
-    box-shadow: 10px 10px 5px #00ff00;
+    box-shadow: 15px 15px 10px #00ff00;
 }
 
 .question-container hr {

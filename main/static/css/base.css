@@ -37,6 +37,20 @@ body {
     text-decoration: underline;
 }
 
+.left-side-menu {
+    width: 15%;
+    min-height: 300px;
+    position: absolute;
+    background-color: black;
+    right: 84%;
+    border: 2px solid #00ff00;
+    border-radius: 45px;
+    box-shadow: 5px 5px 10px #00ff00;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
 footer {
     height: 200px;
     background-image: linear-gradient(to bottom right, #212529, #000000);
