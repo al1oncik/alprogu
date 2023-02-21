@@ -28,5 +28,25 @@
                 </div>
             </div>
         </div>
+        <div class="vote-bar">
+            {% csrf_token %}
+            <button style="{% if voted == 1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
+                    onclick="voteUp({{question.id}})"
+                    id="button-up"
+                    data-state="{% if voted == 1%}active{%else%}inactive{% endif %}">
+                <i class="fa-sharp fa-solid fa-caret-up"></i>
+            </button>
+            <p id="counter">{{question.vote}}</p>
+            <button
+                    style="{% if voted == -1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
+                    onclick="voteDown({{question.id}})"
+                    id="button-down"
+                    data-state="{% if voted == -1%}active{%else%}inactive{% endif %}"><i
+                    class="fa-sharp fa-solid fa-caret-down"></i></button>
+        </div>
     </main>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/question.js' %}"></script>
 {% endblock %}

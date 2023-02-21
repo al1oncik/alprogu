@@ -7,6 +7,7 @@ class Topic(models.Model):
     creator = models.CharField(max_length=150)
     creation_date = models.DateTimeField(auto_now_add=True)
     vote = models.IntegerField(default=0)
+    users_voted = models.JSONField(default=list)
     answers = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
     seen_by = models.JSONField(default=list)

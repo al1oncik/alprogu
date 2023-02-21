@@ -68,6 +68,31 @@ main {
     padding: 4px;
 }
 
+.vote-bar {
+    font-size: 32px;
+    position: absolute;
+    color: #00ff00;
+    right: 12%;
+    text-align: center;
+}
+
+.vote-bar p {
+    font-size: 48px;
+    margin: 0;
+}
+
+.vote-bar button {
+    border: none;
+    color: #555555;
+    padding: 0;
+    background-color: transparent;
+}
+
+.vote-bar i {
+    font-size: 84px;
+    margin: 0;
+}
+
 
 
 
