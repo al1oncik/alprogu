@@ -26,7 +26,6 @@ def question(request, id):
 def vote(request, id, vote):
     v = 1 if vote == 'p' else -1
     topic = Topic.objects.get(id=id)
-    print(topic.users_voted)
     if topic.users_voted == []:
         topic.users_voted = {request.user.username: v}
     else:
