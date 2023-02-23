@@ -26,7 +26,22 @@
             </div>
         </div>
         <div class="left-side-menu">
-            <p>Some text</p>
+            <p>Sort by:</p>
+            <form id="sorting-methods" action="{% url 'main:index' %}" method="post">
+                {% csrf_token %}
+                <label>
+                    <input type="radio" name="sorting" value="Newest" onclick="submitSortingMethodForm()">
+                    Newest
+                </label>
+                <label>
+                    <input type="radio" name="sorting" value="Popular" onclick="submitSortingMethodForm()">
+                    Popular
+                </label>
+                <label>
+                    <input type="radio" name="sorting" value="Vote" onclick="submitSortingMethodForm()">
+                    Vote
+                </label>
+            </form>
         </div>
         {% block content %}
         {% endblock %}

@@ -7,7 +7,7 @@ from users.models import User
 def question(request, id):
     question = Topic.objects.get(id=id)
     question_author = User.objects.get(username=question.creator)
-    if not question.users_voted == []:
+    if request.user.username in question.users_voted:
         voted = question.users_voted[request.user.username]
     else:
         voted = 0
@@ -26,12 +26,13 @@ def question(request, id):
 def vote(request, id, vote):
     v = 1 if vote == 'p' else -1
     topic = Topic.objects.get(id=id)
-    print(topic.users_voted)
     if topic.users_voted == []:
         topic.users_voted = {request.user.username: v}
     else:
         topic.users_voted[request.user.username] = v
-    topic.vote += v
+
+    topic.vote += topic.users_voted[request.user.username]
+
     topic.save()
     return HttpResponseRedirect(reverse("questions:question", args=(id,)))
 

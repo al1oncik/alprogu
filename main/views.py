@@ -6,7 +6,16 @@ from questions.models import Topic
 
 
 def index(request, page=1):
+    paginator = Paginator(Topic.objects.order_by('-id'), 7)
     if request.method == "POST":
+        if request.POST['sorting']:
+            if request.POST['sorting'] == "Newest":
+                paginator = Paginator(Topic.objects.order_by('-id'), 7)
+            if request.POST['sorting'] == "Popular":
+                paginator = Paginator(Topic.objects.order_by('-views'), 7)
+            if request.POST['sorting'] == "Vote":
+                paginator = Paginator(Topic.objects.order_by('-vote'), 7)
+
         form = QuestionCreateForm(data=request.POST)
         if form.is_valid():
             Topic.objects.create(
@@ -17,8 +26,6 @@ def index(request, page=1):
             return HttpResponseRedirect('/')
     else:
         form = QuestionCreateForm()
-
-    paginator = Paginator(Topic.objects.order_by('-id'), 7)
 
     context = {'topics': paginator.get_page(page),
                'form': form,

@@ -47,8 +47,15 @@ body {
     border-radius: 45px;
     box-shadow: 5px 5px 10px #00ff00;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     color: white;
+}
+
+#sorting-methods {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 footer {
@@ -81,6 +88,7 @@ footer i {
     margin-right: 10px;
     color: green;
 }
+
 
 
 
