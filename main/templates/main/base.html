@@ -16,6 +16,10 @@
     <body>
         <div class="navbar">
             <a href="{% url 'main:index' %}" style="text-decoration: none"><h1 class="title">alprogu</h1></a>
+            <form action="{% url 'main:index' %}" method="get" class="search-bar">
+                <input type="text" placeholder="search">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
             <div>
                 {% if not user.is_authenticated %}
                     <a href="{% url 'users:login' %}">Login <i class="fa-solid fa-right-to-bracket"></i></a>
@@ -27,18 +31,17 @@
         </div>
         <div class="left-side-menu">
             <p>Sort by:</p>
-            <form id="sorting-methods" action="{% url 'main:index' %}" method="post">
-                {% csrf_token %}
+            <form id="sorting-methods" action="{% url 'main:index' %}" method="get">
                 <label>
-                    <input type="radio" name="sorting" value="Newest" onclick="submitSortingMethodForm()">
+                    <input id="Newest" type="radio" name="sorting" value="Newest" onclick="submitSortingMethodForm(Newest)">
                     Newest
                 </label>
                 <label>
-                    <input type="radio" name="sorting" value="Popular" onclick="submitSortingMethodForm()">
+                    <input id="Popular" type="radio" name="sorting" value="Popular" onclick="submitSortingMethodForm(Popular)">
                     Popular
                 </label>
                 <label>
-                    <input type="radio" name="sorting" value="Vote" onclick="submitSortingMethodForm()">
+                    <input id="Vote" type="radio" name="sorting" value="Vote" onclick="submitSortingMethodForm(Vote)">
                     Vote
                 </label>
             </form>

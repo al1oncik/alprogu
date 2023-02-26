@@ -14,7 +14,7 @@
 <main>
     {% if user.is_authenticated %}
         <button class="create-question-button" onclick="openQuestionCreationForm()">
-            <i class="fa-solid fa-plus"></i>
+            <p>ASK</p>
         </button>
         <form action="{% url 'main:index' %}" method="post" id="create-question-form">
             {% csrf_token %}
@@ -37,6 +37,11 @@
             <a href="{% url 'questions:question' topic.id %}">
                 <h4>{{ topic.title }}</h4>
             </a>
+            <div class="question-categories">
+                {% for category in topic.categories %}
+                    <p>{{category}}</p>
+                {% endfor %}
+            </div>
             <p class="topic-block-creator">{{ topic.creator }} asked at {{ topic.creation_date }}</p>
         </div>
     {% endfor %}

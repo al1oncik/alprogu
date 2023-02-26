@@ -8,6 +8,9 @@ function closeQuestionCreationForm() {
     form.style.display = "none";
 }
 
-function submitSortingMethodForm() {
-    document.getElementById("sorting-methods").submit()
+function submitSortingMethodForm(method) {
+    document.getElementById("sorting-methods").submit();
+    var radio = document.getElementById(method);
+    radio.checked = true;
+
 }

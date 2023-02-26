@@ -28,10 +28,35 @@
                 </div>
             </div>
         </div>
+        {% if question.answers > 0 %}
+            <div class="answers-header">
+                <p class="answer-title">Answers</p>
+                <hr class="answer-line" />
+            </div>
+        {% endif %}
+
+        {% for comment in question.comments.all %}
+            <div class="answer">
+                <div class="answer-text">
+                    <p>{{comment.text}}</p>
+                </div>
+                <div class="answer-metadata">
+                    <p class="answer-creation-date">{{comment.creation_date}}</p>
+                    <div class="answer-creator">
+                        <img width="50px" height="50px" src="{% static 'img/default-avatar.png' %}">
+                        <p>{{comment.creator}}</p>
+                    </div>
+                </div>
+            </div>
+            <hr hr class="answer-line"/>
+        {% endfor %}
+        <div class="comment-container">
+
+        </div>
         <div class="vote-bar">
             {% csrf_token %}
             <button style="{% if voted == 1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
-                    onclick="voteUp({{question.id}})"
+                    onclick="{% if user.is_authenticated %}voteUp({{question.id}}){% else %}location.href='http://127.0.0.1:8000/users/login/'{% endif %}"
                     id="button-up"
                     data-state="{% if voted == 1%}active{%else%}inactive{% endif %}">
                 <i class="fa-sharp fa-solid fa-caret-up"></i>
@@ -39,7 +64,7 @@
             <p id="counter">{{question.vote}}</p>
             <button
                     style="{% if voted == -1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
-                    onclick="voteDown({{question.id}})"
+                    onclick="{% if user.is_authenticated %}voteDown({{question.id}}){% else %}location.href='http://127.0.0.1:8000/users/login/'{% endif %}"
                     id="button-down"
                     data-state="{% if voted == -1%}active{%else%}inactive{% endif %}"><i
                     class="fa-sharp fa-solid fa-caret-down"></i></button>

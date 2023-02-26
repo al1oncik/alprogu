@@ -19,7 +19,7 @@ main h4:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 60%;
+    width: 62%;
     color: white;
     margin-bottom: 40px;
     border: 5px ridge #00ff00;
@@ -50,13 +50,15 @@ main h4:hover {
     background-color: black;
     border-radius: 45px;
     position: fixed;
-    left: 93%;
-    top: 85%;
+    right: 3%;
+    display: flex;
+    justify-content: center;
 }
 
-.create-question-button i {
-    font-size: 64px;
+.create-question-button p {
+    font-size: 32px;
     color: #00ff00;
+    font-weight: bold;
 }
 
 #create-question-form {
@@ -121,7 +123,7 @@ main h4:hover {
     margin: 0 auto;
     color: white;
     font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
 }
 
 .page-navigator ul {
@@ -146,4 +148,22 @@ main h4:hover {
     color: green;
     font-size: 24px;
     font-weight: bold;
+}
+
+.question-categories {
+    display: flex;
+    position: absolute;
+    left: 12%;
+    top: 70%;
+}
+
+.question-categories p {
+    font-size: 10px;
+    background-color: #00ff00;
+    margin-right: 10px;
+    border: 2px solid #00ff00;
+    border-radius: 20px;
+    color: black;
+    font-weight: bold;
+    padding: 4px;
 }
