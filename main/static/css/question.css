@@ -149,6 +149,39 @@ main {
     margin-top: 0;
 }
 
+.comment-container {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    width: 60%;
+    padding: 20px;
+    margin-bottom: 60px;
+    height: 200px;
+    border: 2px solid #00ff00;
+    box-shadow: 5px 5px 10px #00ff00;
+}
+
+.comment-input {
+    margin-right: 20px;
+    height: 80%;
+    background-color: black;
+    color: white;
+    border: 2px solid #00ff00;
+}
+
+.comment-input:focus {
+    background-color: black;
+    color: white;
+    box-shadow: 5px 5px 5px #00ff00;
+    border: 2px solid #00ff00;
+}
+
+.user-answer-title {
+    color: white;
+    font-size: 48px;
+    margin: 0;
+    margin-bottom: 30px;
+}
 
 
 

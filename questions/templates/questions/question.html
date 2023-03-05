@@ -48,11 +48,14 @@
                     </div>
                 </div>
             </div>
-            <hr hr class="answer-line"/>
+            <hr class="answer-line"/>
         {% endfor %}
-        <div class="comment-container">
-
-        </div>
+        <h3 class="user-answer-title">Your answer</h3>
+        <form class="comment-container" action="{% url 'questions:question' question.id%}" method="post">
+            {% csrf_token %}
+            {{ form.text }}
+            <button class="btn btn-outline-success" type="submit">Send</button>
+        </form>
         <div class="vote-bar">
             {% csrf_token %}
             <button style="{% if voted == 1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
