@@ -43,7 +43,10 @@
                 <div class="answer-metadata">
                     <p class="answer-creation-date">{{comment.creation_date}}</p>
                     <div class="answer-creator">
-                        <img width="50px" height="50px" src="{% static 'img/default-avatar.png' %}">
+                        {{question_author.image}}
+                        <img width="50px" height="50px" src="{% if question_author.img.url %}{% else %}
+                        {% static 'img/default-avatar.png' %}
+                        {% endif %}">
                         <p>{{comment.creator}}</p>
                     </div>
                 </div>
@@ -57,7 +60,6 @@
             <button class="btn btn-outline-success" type="submit">Send</button>
         </form>
         <div class="vote-bar">
-            {% csrf_token %}
             <button style="{% if voted == 1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
                     onclick="{% if user.is_authenticated %}voteUp({{question.id}}){% else %}location.href='http://127.0.0.1:8000/users/login/'{% endif %}"
                     id="button-up"

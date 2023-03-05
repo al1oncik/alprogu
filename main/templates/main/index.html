@@ -30,8 +30,8 @@
     {% for topic in topics %}
         <div class="topic-block">
             <div class="topic-block-metadata">
-                <p>{{ topic.vote }} vote</p>
-                <p>{{ topic.answers }} answers</p>
+                <p style="{% if topic.vote > 0%} color: #00ff00{% endif %} {% if topic.vote < 0 %} color: #ff0000 {% endif %}">{{ topic.vote }} vote</p>
+                <p style="{% if topic.answers > 0%}color: #00cc00; border: 1px solid #00ff00; border-radius: 45px;padding: 4px;{% endif %}">{{ topic.answers }} answers</p>
                 <p>{{ topic.views }} views</p>
             </div>
             <a href="{% url 'questions:question' topic.id %}">
