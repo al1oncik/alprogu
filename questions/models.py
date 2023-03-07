@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 class Topic(models.Model):
@@ -22,9 +23,12 @@ class Topic(models.Model):
 
 class Comment(models.Model):
     text = models.TextField()
-    creator = models.CharField(max_length=150)
+    creator = models.CharField(max_length=150, default="undefined")
     vote = models.IntegerField(default=0)
     creation_date = models.DateTimeField(auto_now_add=True)
     users_voted = models.JSONField(default=list)
     def __str__(self):
         return self.text
+
+    def get_image(self):
+        return User.objects.get(username=self.creator).image

@@ -43,8 +43,8 @@
                 <div class="answer-metadata">
                     <p class="answer-creation-date">{{comment.creation_date}}</p>
                     <div class="answer-creator">
-                        {{question_author.image}}
-                        <img width="50px" height="50px" src="{% if question_author.img.url %}{% else %}
+                        <img width="50px" height="50px" src="{% if comment.get_image %}/media/{{comment.get_image}}
+                        {% else %}
                         {% static 'img/default-avatar.png' %}
                         {% endif %}">
                         <p>{{comment.creator}}</p>
