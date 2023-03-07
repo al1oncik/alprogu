@@ -6,7 +6,7 @@
 body {
     //background-image: linear-gradient(to bottom right, #0f9b0f, #000000);
     background-image: linear-gradient(to bottom right, #000000, #434343);
-    padding: 10px 0 0 0;
+    padding: 120px 0 0 0;
 }
 
 .title {
@@ -15,6 +15,7 @@ body {
 
 .navbar {
       background-color: #0c0c0c;
+      width: 95%;
       color: #00ff00;
       display: flex;
       justify-content: space-between;
@@ -25,6 +26,9 @@ body {
       margin-bottom: 30px;
       margin-left: 20px;
       margin-right: 20px;
+      position: fixed;
+      top: 0%;
+      z-index: 3;
 }
 
 .navbar a {
@@ -40,15 +44,22 @@ body {
 .left-side-menu {
     width: 15%;
     min-height: 300px;
-    position: absolute;
+    position: fixed;
     background-color: black;
     right: 84%;
     border: 2px solid #00ff00;
     border-radius: 45px;
     box-shadow: 5px 5px 10px #00ff00;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     color: white;
+}
+
+#sorting-methods {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 footer {
@@ -82,5 +93,29 @@ footer i {
     color: green;
 }
 
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 2px solid #555555;
+    transparency: 50%;
+    width: 50%;
+    padding: 2px;
+    background-color: rgba(85,85,85,0.5);
+}
 
+.search-bar input {
+    background-color: rgba(0,0,0,0);
+    color: #00ff00;
+    border: none;
+    width: 100%;
+}
+
+.search-bar i {
+    color: #00ff00;
+}
+
+.search-bar button {
+    background-color: rgba(0,255,0,0);
+    border: none;
+}
 

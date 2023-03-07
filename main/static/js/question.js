@@ -28,13 +28,6 @@ function voteUp(id) {
         vote_up.setAttribute('data-state', 'active');
         vote_down.setAttribute('data-state', 'inactive');
         counter.innerHTML = parseInt(counter.innerHTML, 10)+1;
-    } else {
-        xhr.open('POST', '/questions/vote/'+id+"/m/");
-        xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-        xhr.send();
-        vote_up.style.color = '#555555';
-        vote_up.setAttribute('data-state', 'inactive');
-        counter.innerHTML = parseInt(counter.innerHTML, 10)-1;
     }
 }
 
@@ -51,13 +44,6 @@ function voteDown(id) {
         vote_down.setAttribute('data-state', 'active');
         vote_up.setAttribute('data-state', 'inactive');
         counter.innerHTML = parseInt(counter.innerHTML, 10)-1;
-    } else {
-        xhr.open('POST', '/questions/vote/'+id+"/p/");
-        xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-        xhr.send();
-        vote_down.style.color = '#555555';
-        vote_down.setAttribute('data-state', 'inactive');
-        counter.innerHTML = parseInt(counter.innerHTML, 10)+1;
     }
 }
 

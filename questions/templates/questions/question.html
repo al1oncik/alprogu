@@ -28,10 +28,40 @@
                 </div>
             </div>
         </div>
-        <div class="vote-bar">
+        {% if question.answers > 0 %}
+            <div class="answers-header">
+                <p class="answer-title">Answers</p>
+                <hr class="answer-line" />
+            </div>
+        {% endif %}
+
+        {% for comment in question.comments.all %}
+            <div class="answer">
+                <div class="answer-text">
+                    <p>{{comment.text}}</p>
+                </div>
+                <div class="answer-metadata">
+                    <p class="answer-creation-date">{{comment.creation_date}}</p>
+                    <div class="answer-creator">
+                        <img width="50px" height="50px" src="{% if comment.get_image %}/media/{{comment.get_image}}
+                        {% else %}
+                        {% static 'img/default-avatar.png' %}
+                        {% endif %}">
+                        <p>{{comment.creator}}</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="answer-line"/>
+        {% endfor %}
+        <h3 class="user-answer-title">Your answer</h3>
+        <form class="comment-container" action="{% url 'questions:question' question.id%}" method="post">
             {% csrf_token %}
+            {{ form.text }}
+            <button class="btn btn-outline-success" type="submit">Send</button>
+        </form>
+        <div class="vote-bar">
             <button style="{% if voted == 1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
-                    onclick="voteUp({{question.id}})"
+                    onclick="{% if user.is_authenticated %}voteUp({{question.id}}){% else %}location.href='http://127.0.0.1:8000/users/login/'{% endif %}"
                     id="button-up"
                     data-state="{% if voted == 1%}active{%else%}inactive{% endif %}">
                 <i class="fa-sharp fa-solid fa-caret-up"></i>
@@ -39,7 +69,7 @@
             <p id="counter">{{question.vote}}</p>
             <button
                     style="{% if voted == -1 %}color: #00ff00;{% else %}color: #555555;{% endif %}"
-                    onclick="voteDown({{question.id}})"
+                    onclick="{% if user.is_authenticated %}voteDown({{question.id}}){% else %}location.href='http://127.0.0.1:8000/users/login/'{% endif %}"
                     id="button-down"
                     data-state="{% if voted == -1%}active{%else%}inactive{% endif %}"><i
                     class="fa-sharp fa-solid fa-caret-down"></i></button>

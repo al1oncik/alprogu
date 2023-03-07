@@ -14,7 +14,7 @@
 <main>
     {% if user.is_authenticated %}
         <button class="create-question-button" onclick="openQuestionCreationForm()">
-            <i class="fa-solid fa-plus"></i>
+            <p>ASK</p>
         </button>
         <form action="{% url 'main:index' %}" method="post" id="create-question-form">
             {% csrf_token %}
@@ -30,28 +30,37 @@
     {% for topic in topics %}
         <div class="topic-block">
             <div class="topic-block-metadata">
-                <p>{{ topic.vote }} vote</p>
-                <p>{{ topic.answers }} answers</p>
+                <p style="{% if topic.vote > 0%} color: #00ff00{% endif %} {% if topic.vote < 0 %} color: #ff0000 {% endif %}">{{ topic.vote }} vote</p>
+                <p style="{% if topic.answers > 0%}color: #00cc00; border: 1px solid #00ff00; border-radius: 45px;padding: 4px;{% endif %}">{{ topic.answers }} answers</p>
                 <p>{{ topic.views }} views</p>
             </div>
             <a href="{% url 'questions:question' topic.id %}">
                 <h4>{{ topic.title }}</h4>
             </a>
+            <div class="question-categories">
+                {% for category in topic.categories %}
+                    <p>{{category}}</p>
+                {% endfor %}
+            </div>
             <p class="topic-block-creator">{{ topic.creator }} asked at {{ topic.creation_date }}</p>
         </div>
     {% endfor %}
-    <div class="page-navigator">
-        <ul>
-            {% if topics.has_previous %}
-                <li><a href="{% url 'main:index' page|add:-1 %}"><i class="fa-solid fa-arrow-left"></i></a></li>
-                <li><a href="{% url 'main:index' page|add:-1 %}">{{page|add:-1}}</a></li>
-            {% endif %}
-            <li><a class="current-page" href="{% url 'main:index' page%}">{{page}}</a></li>
-            {% if topics.has_next %}
-                <li><a href="{% url 'main:index' page|add:1 %}">{{page|add:1}}</a></li>
-                <li><a href="{% url 'main:index' page|add:1 %}"><i class="fa-solid fa-arrow-right"></i></a></li>
-            {% endif %}
-        </ul>
-    </div>
+    {% if topics%}
+        <div class="page-navigator">
+            <ul>
+                {% if topics.has_previous %}
+                    <li><a href="{% url 'main:index' page|add:-1 %}"><i class="fa-solid fa-arrow-left"></i></a></li>
+                    <li><a href="{% url 'main:index' page|add:-1 %}">{{page|add:-1}}</a></li>
+                {% endif %}
+                <li><a class="current-page" href="{% url 'main:index' page%}">{{page}}</a></li>
+                {% if topics.has_next %}
+                    <li><a href="{% url 'main:index' page|add:1 %}">{{page|add:1}}</a></li>
+                    <li><a href="{% url 'main:index' page|add:1 %}"><i class="fa-solid fa-arrow-right"></i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    {% else %}
+        <p class="not-found-label">No results found</p>
+    {% endif %}
 </main>
 {% endblock %}
