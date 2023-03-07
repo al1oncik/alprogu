@@ -27,6 +27,11 @@ def index(request, page=1):
             if request.GET['sorting'] == "Vote":
                 paginator = Paginator(Topic.objects.order_by('-vote'), 20)
 
+        if "search" in request.GET:
+            topics = Topic.objects.filter(title__icontains=request.GET['search'])
+            paginator = Paginator(topics, 20)
+
+
     context = {'topics': paginator.get_page(page),
                'form': form,
                'page': page}
