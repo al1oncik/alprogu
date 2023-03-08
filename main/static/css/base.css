@@ -59,7 +59,26 @@ body {
 #sorting-methods {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+}
+
+.sorting-button {
+    background-color: black;
+    color: grey;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.sorting-button i {
+    color: black;
+}
+
+.sorting-button:hover {
+    text-decoration: underline;
+    color: #00ff00;
+}
+
+.sorting-button:hover i {
+    color: #00ff00;
 }
 
 footer {

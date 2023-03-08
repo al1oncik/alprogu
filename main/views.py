@@ -19,13 +19,13 @@ def index(request, page=1):
     else:
         form = QuestionCreateForm()
     if request.method == "GET":
-        if "sorting" in request.GET:
-            if request.GET['sorting'] == "Newest":
-                paginator = Paginator(Topic.objects.order_by('-id'), 20)
-            if request.GET['sorting'] == "Popular":
-                paginator = Paginator(Topic.objects.order_by('-views'), 20)
-            if request.GET['sorting'] == "Vote":
-                paginator = Paginator(Topic.objects.order_by('-vote'), 20)
+        print(request.GET)
+        if 'Newest' in request.GET:
+            paginator = Paginator(Topic.objects.order_by('-id'), 20)
+        if 'Popular' in request.GET:
+            paginator = Paginator(Topic.objects.order_by('-views'), 20)
+        if 'Vote' in request.GET:
+            paginator = Paginator(Topic.objects.order_by('-vote'), 20)
 
         if "search" in request.GET:
             topics = Topic.objects.filter(title__icontains=request.GET['search'])
