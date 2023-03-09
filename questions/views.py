@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, reverse
 
 from .models import Topic, Comment
 from users.models import User
-from .forms import AnswerCreateForm
+from .forms import AnswerCreateForm, QuestionCreateForm
 
 
 def question(request, id):
@@ -37,6 +37,24 @@ def question(request, id):
                'form': form,
             }
     return render(request, 'questions/question.html', context)
+
+
+def create(request):
+    if request.method == "POST":
+        form = QuestionCreateForm(data=request.POST)
+        if form.is_valid():
+            Topic.objects.create(
+                title=request.POST['title'],
+                text=request.POST['text'],
+                categories=request.POST.getlist('categories'),
+                creator=request.user.username,
+            )
+            return HttpResponseRedirect('/')
+    else:
+        form = QuestionCreateForm()
+    context = {'form': form}
+    return render(request, 'questions/create.html', context)
+
 
 def vote(request, id, vote):
     v = 1 if vote == 'p' else -1

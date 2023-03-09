@@ -1,8 +1,14 @@
+@font-face {
+    font-family: "Righteous";
+    src: url('../fonts/Righteous/Righteous-Regular.ttf');
+}
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 400px;
+    font-family: "Righteous";
 }
 
 .question-container {
@@ -16,6 +22,7 @@ main {
     padding: 20px;
     background-color: black;
     box-shadow: 15px 15px 10px #00ff00;
+    word-wrap: break-word;
 }
 
 .question-container hr {
@@ -103,6 +110,7 @@ main {
     color: white;
     width: 60%;
     margin-bottom: 60px;
+    word-wrap: break-word;
 }
 
 .answer-text {

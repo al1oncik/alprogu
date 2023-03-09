@@ -13,9 +13,7 @@
 {% block content %}
 <main>
     {% if user.is_authenticated %}
-        <button class="create-question-button" onclick="openQuestionCreationForm()">
-            <p>ASK</p>
-        </button>
+            <a class="create-question-button" href="{% url 'questions:create' %}"><i class="fa-regular fa-circle-question"></i></a>
         <form action="{% url 'main:index' %}" method="post" id="create-question-form">
             {% csrf_token %}
             {{ form.title }}

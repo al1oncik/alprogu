@@ -4,9 +4,9 @@
 }
 
 body {
-    //background-image: linear-gradient(to bottom right, #0f9b0f, #000000);
     background-image: linear-gradient(to bottom right, #000000, #434343);
     padding: 120px 0 0 0;
+    font-family: "Righteous";
 }
 
 .title {
@@ -66,6 +66,7 @@ body {
     color: grey;
     border: none;
     margin-bottom: 10px;
+    font-family: "Righteous";
 }
 
 .sorting-button i {
