@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, reverse
 
 from .models import Topic, Comment
 from users.models import User
-from .forms import AnswerCreateForm, QuestionCreateForm
+from .forms import AnswerCreateForm, QuestionCreateForm, QuestionChangeForm
 
 
 def question(request, id):
@@ -19,15 +19,18 @@ def question(request, id):
         question.save()
 
     if request.method == "POST":
-        form = AnswerCreateForm(data=request.POST)
-        if form.is_valid():
-            answer = Comment(text=request.POST['text'],
-                             creator=request.user.username,
-                             )
-            answer.save()
-            question.comments.add(answer)
-            question.save()
-            return HttpResponseRedirect(reverse('questions:question', args=[question.id]))
+        if "change" in request.POST:
+            return HttpResponseRedirect(f"/questions/question/change/{id}/")
+        else:
+            form = AnswerCreateForm(data=request.POST)
+            if form.is_valid():
+                answer = Comment(text=request.POST['text'],
+                                 creator=request.user.username,
+                                 )
+                answer.save()
+                question.comments.add(answer)
+                question.save()
+                return HttpResponseRedirect(reverse('questions:question', args=[question.id]))
     else:
         form = AnswerCreateForm()
 
@@ -68,4 +71,17 @@ def vote(request, id, vote):
 
     topic.save()
     return HttpResponseRedirect(reverse("questions:question", args=(id,)))
+
+def change(request, id):
+    if request.method == "POST":
+        form = QuestionChangeForm(instance=Topic.objects.get(id=id), data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('questions:question', args=(id,)))
+    else:
+        form = QuestionChangeForm(instance=Topic.objects.get(id=id))
+
+    context = {'form': form,
+               'id': id}
+    return render(request, 'questions/change.html', context)
 

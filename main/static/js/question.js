@@ -47,3 +47,27 @@ function voteDown(id) {
     }
 }
 
+function showOptions() {
+    var optionsMenu = document.getElementsByClassName('options');
+    if (optionsMenu[0].style.display == 'none')
+    {
+        optionsMenu[0].style.display = 'flex';
+    } else {
+        optionsMenu[0].style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

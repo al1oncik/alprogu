@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Create question</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/create.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <h3 class="form-title">Change your question</h3>
+        <form class="question-creation-form" action="{% url 'questions:change' id %}" method="post">
+            {% csrf_token %}
+            <p class="input-label">Title:</p>
+            {{form.title}}
+            <p class="input-label">Text:</p>
+            {{form.text}}
+            <p class="input-label">Categories:</p>
+
+            <div class="categories">
+                {% for category in form.categories %}
+                    <div class="category-choice">
+                        {{category}}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <button type="sumbit" class="btn btn-outline-success">change</button>
+        </form>
+    </main>
+{% endblock %}
