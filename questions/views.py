@@ -21,6 +21,9 @@ def question(request, id):
     if request.method == "POST":
         if "change" in request.POST:
             return HttpResponseRedirect(f"/questions/question/change/{id}/")
+        if "delete" in request.POST:
+            question.delete()
+            return HttpResponseRedirect(reverse('main:index'))
         else:
             form = AnswerCreateForm(data=request.POST)
             if form.is_valid():
