@@ -36,11 +36,12 @@ def question(request, id):
                 return HttpResponseRedirect(reverse('questions:question', args=[question.id]))
     else:
         form = AnswerCreateForm()
-
     context = {'question': question,
                'question_author': question_author,
                'voted': voted,
                'form': form,
+               'question_text': question.text.split('<code>'),
+               'question_length_range': range(0, len(question.text), 2),
             }
     return render(request, 'questions/question.html', context)
 
@@ -58,7 +59,9 @@ def create(request):
             return HttpResponseRedirect('/')
     else:
         form = QuestionCreateForm()
-    context = {'form': form}
+    context = {
+        'form': form,
+                }
     return render(request, 'questions/create.html', context)
 
 
