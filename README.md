@@ -2,13 +2,13 @@
 IT forum with matrix theme
 
 # Installation
-'''bash
+```bash
 git clone https://github.com/al1oncik/alprogu.git
 
 cd alprogu
 
 python3 manage.py runserver
-'''
+```
 
 Open localhost ( 127.0.0.1 ) in your browser to see a website
 
