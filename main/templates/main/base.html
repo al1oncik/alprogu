@@ -30,20 +30,11 @@
             </div>
         </div>
         <div class="left-side-menu">
-            <p>Sort by:</p>
+            <p style="font-size: 24px; margin-bottom: 2px; font-family: 'Righteous';">Sort by:</p>
             <form id="sorting-methods" action="{% url 'main:index' %}" method="get">
-                <label>
-                    <input id="Newest" type="radio" name="sorting" value="Newest" onclick="submitSortingMethodForm(Newest)">
-                    Newest
-                </label>
-                <label>
-                    <input id="Popular" type="radio" name="sorting" value="Popular" onclick="submitSortingMethodForm(Popular)">
-                    Popular
-                </label>
-                <label>
-                    <input id="Vote" type="radio" name="sorting" value="Vote" onclick="submitSortingMethodForm(Vote)">
-                    Vote
-                </label>
+                <button class="sorting-button" type="submit" name="Newest"><i class="fa-sharp fa-solid fa-caret-right"></i> Newest</button>
+                <button class="sorting-button" type="submit" name="Popular"><i class="fa-sharp fa-solid fa-caret-right"></i> Popular</button>
+                <button class="sorting-button" type="submit" name="Vote"><i class="fa-sharp fa-solid fa-caret-right"></i> Vote</button>
             </form>
         </div>
         {% block content %}

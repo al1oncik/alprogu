@@ -26,6 +26,7 @@ main h4:hover {
     padding: 20px;
     background-color: black;
     box-shadow: 10px 10px 5px #00ff00;
+    overflow: hidden;
 }
 
 .topic-block-creator {
@@ -46,13 +47,15 @@ main h4:hover {
 }
 
 .create-question-button {
-    border: 3px solid #00ff00;
-    background-color: black;
-    border-radius: 45px;
     position: fixed;
-    right: 3%;
-    display: flex;
-    justify-content: center;
+    top: 15%;
+    right: 4%;
+    font-size: 48px;
+    color: #00ff00;
+}
+
+.create-question-button:hover {
+    font-size: 54px;
 }
 
 .create-question-button p {
@@ -86,36 +89,6 @@ main h4:hover {
     position: absolute;
     left: 15px;
     top: 15px;
-}
-
-.form-title-input {
-    width: 60%;
-    height: 15%;
-    margin-bottom: 20px;
-    border-radius: 45px;
-    border: 2px solid #00ff00;
-    background-color: black;
-    color: #00ff00;
-}
-
-.form-title-input:focus {
-    background-color: black;
-    color: #00ff00;
-}
-
-.form-text-input {
-    width: 80%;
-    height: 60%;
-    margin-bottom: 20px;
-    border-radius: 45px;
-    border: 2px solid #00ff00;
-    background-color: black;
-    color: #00ff00;
-}
-
-.form-text-input:focus {
-    background-color: black;
-    color: #00ff00;
 }
 
 .page-navigator {

@@ -9,13 +9,25 @@
 {% block content %}
     <main>
         <div class="question-container">
+            {% if user == question_author %}
+                <button class="options-button" onclick="showOptions()">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <form class="options" action="{% url 'questions:question' question.id %}" method="post">
+                    {% csrf_token %}
+                    <button name="change" type="submit">Change <i class="fa-solid fa-pen"></i></button>
+                    <button name="delete" type="submit">Delete <i class="fa-solid fa-trash-can"></i></button>
+                </form>
+            {% endif %}
             <h3 class="question-title">{{ question.title }}</h3>
             <div class="question-metadata">
                 <p>Asked at {{question.creation_date}}</p>
                 <p>Viewed by {{question.views}} people</p>
             </div>
             <hr />
-            <p class="question-text">{{ question.text}}</p>
+            <div class="question-text">
+                <p>{{question.text}}</p>
+            </div>
             <div class="question-footer">
                 <div class="question-categories">
                     {% for category in question.categories %}

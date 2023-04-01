@@ -1,11 +1,18 @@
+@font-face {
+    font-family: "Righteous";
+    src: url('../fonts/Righteous/Righteous-Regular.ttf');
+}
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 400px;
+    font-family: "Righteous";
 }
 
 .question-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -16,6 +23,7 @@ main {
     padding: 20px;
     background-color: black;
     box-shadow: 15px 15px 10px #00ff00;
+    word-wrap: break-word;
 }
 
 .question-container hr {
@@ -28,6 +36,16 @@ main {
 
 .question-text {
     font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.code-space {
+    display: flex;
+    border: 3px solid grey;
+    border-radius: 5px;
+    color: #00ff00;
 }
 
 .question-metadata {
@@ -103,6 +121,7 @@ main {
     color: white;
     width: 60%;
     margin-bottom: 60px;
+    word-wrap: break-word;
 }
 
 .answer-text {
@@ -181,6 +200,31 @@ main {
     font-size: 48px;
     margin: 0;
     margin-bottom: 30px;
+}
+
+.options-button {
+    position: absolute;
+    color: #00ff00;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    right: 2%;
+    font-size: 20px;
+}
+
+.options {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    display: none;
+    flex-direction: column;
+}
+
+.options button {
+    background-color: black;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    font-size: 24px;
+
 }
 
 
