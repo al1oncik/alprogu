@@ -25,9 +25,9 @@
                 <p>Viewed by {{question.views}} people</p>
             </div>
             <hr />
-            <p class="question-text">
-                {{question.text}}
-            </p>
+            <div class="question-text">
+                <p>{{question.text}}</p>
+            </div>
             <div class="question-footer">
                 <div class="question-categories">
                     {% for category in question.categories %}

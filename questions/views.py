@@ -40,7 +40,6 @@ def question(request, id):
                'question_author': question_author,
                'voted': voted,
                'form': form,
-               'question_text': question.text.split('<code>'),
                'question_length_range': range(0, len(question.text), 2),
             }
     return render(request, 'questions/question.html', context)
