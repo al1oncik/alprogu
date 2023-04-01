@@ -2,7 +2,7 @@
 IT forum with matrix theme
 
 # Installation
-git clone https://github.com/al1oncik/alprogu.git
+'''git clone https://github.com/al1oncik/alprogu.git'''
 
 cd alprogu
 
