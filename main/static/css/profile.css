@@ -5,10 +5,11 @@
 
 body {
     background-color: black;
-    margin-top: 20px;
     padding: 0 200px 0 200px;
     background-image: linear-gradient(to bottom right, #000000, #434343);
     font-family: "Righteous";
+    height: 100vh;
+    padding-top: 60px;
 }
 
 .container {

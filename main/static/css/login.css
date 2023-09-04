@@ -6,13 +6,14 @@
 body {
     background-color: black;
     font-family: "Righteous";
+    height: 100vh;
+    padding-top: 60px;
 }
 
 .login_block {
     max-width: 30%;
     height: 300px;
     margin: 0 auto;
-    margin-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
